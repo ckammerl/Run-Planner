@@ -36,24 +36,19 @@ to maintain, and doesn't provide real customer benefit (at least not enough to w
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
   Run-Planner
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
   For runners wondering what to wear, and where to run.
 
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
   Run-Planner gives you information on what to wear for your run based off of the weather, time, and distance of your run. The more information you put in, the more information we can give you! 
 
 ## Problem ##
-  > Describe the problem your product solves.
   Sometimes you don't know what to bring for a run you have in two days, 200 miles away.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
   Run-Planner gives you a well educated snapshot of what your run looks like, and what you should wear for your run based on:
     -weather
     -location
@@ -62,17 +57,10 @@ to maintain, and doesn't provide real customer benefit (at least not enough to w
   It can also generate a route for you based off of the mapmyrun api.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
   "Why spend time thinking about what to wear when we can tell you what to wear."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
   Open up run-helper, type in your route(or your location) and let us do the rest!
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
   "I don't know what to wear for my run in two days 200 miles away! I need help!"
-
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
-  
