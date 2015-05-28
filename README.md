@@ -7,7 +7,7 @@
 * Shaan Shah, developer, ambitious sports, sports, sports guy.
 
 ## API Usage
-* [To create running routes **Map My Run**](https://developer.underarmour.com/docs/)
+* [To determine running routes we are using **Map My Run**](https://developer.underarmour.com/docs/)
 
 ## Workflow
 * We will conform to the [AirBnB style guide](https://github.com/airbnb/javascript/tree/master/es5)
