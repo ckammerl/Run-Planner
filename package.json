@@ -1,0 +1,19 @@
+{
+  "name": "Run-Planner",
+  "version": "0.0.1",
+  "description": "## Team * Nathan Lin, scrum master and developer who loves to travel. * Christiane Kammerl, developer from Munich who loves biking, taking walks, and enjoying nature. * Chris Grovers, product owner and developer who's sense of humor involves constant lies. * Shaan Shah, developer, ambitious sports, sports, sports guy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nlinx/Run-Planner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nlinx/Run-Planner/issues"
+  },
+  "homepage": "https://github.com/nlinx/Run-Planner"
+}
