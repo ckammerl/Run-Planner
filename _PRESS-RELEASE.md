@@ -50,7 +50,7 @@ to maintain, and doesn't provide real customer benefit (at least not enough to w
 
 ## Problem ##
   > Describe the problem your product solves.
-  Sometimes you don't know what to bring for a run you have in 3 hours, two days, 200 miles away.
+  Sometimes you don't know what to bring for a run you have in two days, 200 miles away.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
@@ -75,4 +75,4 @@ to maintain, and doesn't provide real customer benefit (at least not enough to w
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
-
+  
