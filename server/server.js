@@ -29,21 +29,5 @@ app.get('/test', function(req, res){
   });
 });
 
-
-app.post('/test', function(req, res){
-  var zipCode = req.body.data || 94704; // maybe change .data
-  var result = {};
-  var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + 'us';
-  request(url, function(error, response, body) {
-    if (!error && res.statusCode === 200) {
-      result.weather = JSON.parse(body).weather[0].main;
-      result.temp = JSON.parse(body).main.temp;
-      res.json(result); // send the
-    } else {
-      console.error(error);
-    }
-  });
-});
-
 app.listen(port);
 console.log('Listening on port ' + port);
