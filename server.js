@@ -5,7 +5,7 @@ var server = express();
 // use port 3000 on your local environment.
 var port = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + '/client'));
+server.use(express.static(__dirname + '/client'));
 
 server.listen(port);
 console.log('Listening on port ' + port);
