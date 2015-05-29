@@ -10,13 +10,29 @@ angular.module("runPlannerApp", [
   $stateProvider
     .state("search", {
       url: "/",
-      templateUrl: "partials/search.html"
+      templateUrl: "views/result/search.html"
     })
 
-  // Reference: https://github.com/angular-ui/ui-router/wiki/Multiple-Named-Views
-  $stateProvider
     .state("result", {
       url: "/result",
-      templateUrl: "partials/result.html",
+      views: {
+        // root
+        "": {
+          templateUrl: "views/result/result.html"
+        },
+        // child;
+        /** viewname@statename: viewname is the name used in the view directive;  state name is the state's absolute name, e.g. result or contact.item. */
+        "weather@result": {
+          templateUrl: "views/result/result.weather.html"
+        },
+        // child
+        "map@result": {
+          templateUrl: "views/result/result.map.html"
+        },
+        // child
+        "clothing@result": {
+          templateUrl: "views/result/result.clothing.html"
+        }
+      }
     })
 });
