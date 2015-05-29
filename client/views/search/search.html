@@ -1,0 +1,9 @@
+<div ng-controller="searchController">
+  <hr/>
+  <form novalidate>
+    <h2>Where you runnin'?</h2>
+    <input type="text" placeholder="address, city, zip code, etc." ng-model="search.startLocation" />
+    {{search | json}}
+    <input type="submit" ng-click="sendInput(search)" value="submit" />
+  </form>
+</div>
