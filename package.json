@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/nlinx/Run-Planner/issues"
   },
-  "homepage": "https://github.com/nlinx/Run-Planner"
+  "homepage": "https://github.com/nlinx/Run-Planner",
+  "dependencies": {
+    "mongoose": "^4.0.4"
+  }
 }
