@@ -36,7 +36,7 @@ var weatherSchema = new Schema({
 });
 
 // weather model
-var Weather = mongoose.model('Weather', weatherSchema);
+var weather = mongoose.model('weather', weatherSchema);
 
 
-module.exports = Weather;
+module.exports = weather;
