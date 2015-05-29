@@ -1,6 +1,7 @@
 {
   "name": "Run-Planner",
   "version": "0.0.1",
+
   "description": "An app that tells you what to wear and what route to take when you run",
   "main": "server.js",
   "scripts": {
