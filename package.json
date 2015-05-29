@@ -1,22 +1,24 @@
 {
   "name": "Run-Planner",
   "version": "0.0.1",
-  "description": "## Team * Nathan Lin, scrum master and developer who loves to travel. * Christiane Kammerl, developer from Munich who loves biking, taking walks, and enjoying nature. * Chris Grovers, product owner and developer who's sense of humor involves constant lies. * Shaan Shah, developer, ambitious sports, sports, sports guy.",
-  "main": "index.js",
+  "description": "An app that tells you what to wear and what route to take when you run",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nlinx/Run-Planner.git"
+    "url": "https://github.com/ClairvoyantChameleon/Run-Planner.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nlinx/Run-Planner/issues"
+    "url": "https://github.com/ClairvoyantChameleon/Run-Planner/issues"
   },
-  "homepage": "https://github.com/nlinx/Run-Planner",
+  "homepage": "https://github.com/ClairvoyantChameleon/Run-Planner",
   "dependencies": {
-    "mongoose": "^4.0.4"
+    "express": "~4.12.4",
+    "mongoose": "~4.0.4"
   }
 }
