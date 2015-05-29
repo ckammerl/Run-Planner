@@ -15,7 +15,7 @@ var port = process.env.PORT || 3000;
 
 // api requests
 // get weather data
-app.get('/weather', function(req, res){
+app.get('/api/result', function(req, res){
   var zipCode = req.body.data || 94704; // maybe change .data
   var result = {};
   var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + 'us&units=Imperial';
