@@ -1,22 +1,22 @@
 
-
 // Declare app level module which depends on views, and components
-angular.module('runPlannerApp', [
-  'ngRoute',
-  'myApp.services',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.calendar',
-  'myApp.version'
-]).
+angular.module("runPlannerApp", [
+  "ui.router"
+])
 
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider
+.config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise("/");
 
-  .when('/calendar', {
-      templateUrl: 'calendar/calendar.html',
-      controller: 'CalendarController'
-  })
+  $stateProvider
+    .state("search", {
+      url: "/",
+      templateUrl: "partials/search.html"
+    })
 
-  .otherwise({redirectTo: '/calendar'});
-}]);
+  // Reference: https://github.com/angular-ui/ui-router/wiki/Multiple-Named-Views
+  $stateProvider
+    .state("result", {
+      url: "/result",
+      templateUrl: "partials/result.html",
+    })
+});

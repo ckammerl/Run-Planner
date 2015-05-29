@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="runPlannerApp" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Run Planner App</title>
+  <script src="../bower_components/angular/angular.js"></script>
+</head>
+<body>
+  <div class="nave">
+    <h1>Run Planner</h1>
+    <a ui-sref="search">Search</a>
+    <a ui-sref="result">Result</a>
+  </div>
+  
+  <div ui-view></div>
+
+  
+  <script src="app.js"></script>
+  <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+</body>
+</html>
