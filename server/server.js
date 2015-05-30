@@ -15,13 +15,13 @@ var port = process.env.PORT || 3000;
 
 // api requests
 // get weather data
-app.get('/weather', function(req, res){
-  var zipCode = req.body.data || 94704; // maybe change .data
+app.get('/api/result', function(req, res){
+  var zipCode = req.body.startLocation.zipCode || 94704; // maybe change .data
   var result = {};
   var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + 'us&units=Imperial';
   request(url, function(error, response, body) {
     if (!error && res.statusCode === 200) {
-      result.temp = {'F': JSON.parse(body).main.temp, 'C': Math.round(utils.convertToMetric(JSON.parse(body).main.temp) * 100) / 100};
+      result.temp = {'F': Math.round(JSON.parse(body).main.temp), 'C': Math.round(utils.convertToMetric(JSON.parse(body).main.temp))};
       result.humidity = JSON.parse(body).main.humidity;
       result.wind = JSON.parse(body).wind;
       result.weather = JSON.parse(body).weather[0].main;
