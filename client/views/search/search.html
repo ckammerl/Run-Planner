@@ -1,9 +1,9 @@
-<div ng-controller="searchController">
+<div ng-controller="SearchController">
   <hr/>
-  <form novalidate>
+  <form novalidate ng-submit="sendInput(search)">
     <h2>Where you runnin'?</h2>
     <input type="text" placeholder="address, city, zip code, etc." ng-model="search.startLocation" />
     {{search | json}}
-    <input type="submit" ng-click="sendInput(search)" value="submit" />
+    <input type="submit" value="submit" />
   </form>
 </div>

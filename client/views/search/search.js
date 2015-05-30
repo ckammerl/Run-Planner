@@ -1,7 +1,10 @@
 angular.module("runPlannerApp.search", [])
 
-.controller("searchController", function($scope) {
-  var sendInput = function() {
-    console.log('scope search', $scope.search);
+.controller("SearchController", function($scope, Search) {
+  $scope.sendInput = function() {
+    Search.sendInput($scope.search)
+      .then(function(resultFromAPI) {
+        $state.go("result", resultFromAPI);
+      })
   }
-}); 
+});
