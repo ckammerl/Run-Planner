@@ -4,8 +4,10 @@ angular.module("runPlannerApp.services", [])
 
   var sendInput = function(searchInput) {
 
+    // var data = JSON.stringify(searchInput);
+    // console.log('the input that is being sent to api', data);
     return $http({
-      method: 'GET',
+      method: 'POST',
       url: '/api/result',
       data: searchInput
     })

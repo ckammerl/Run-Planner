@@ -13,9 +13,15 @@ app.use(bodyParser.json());
 // use port 3000 on your local environment.
 var port = process.env.PORT || 3000;
 
+console.log(__dirname + '/../client');
+
+app.use(express.static(__dirname + '/../client'));
+
+
 // api requests
 // get weather data
-app.get('/api/result', function(req, res){
+app.post('/api/result', function(req, res){
+  console.log(req.body);
   var zipCode = req.body.startLocation.zipCode || 94704; // maybe change .data
   var result = {};
   var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + 'us&units=Imperial';
@@ -31,6 +37,8 @@ app.get('/api/result', function(req, res){
     }
   });
 });
+
+
 
 app.listen(port);
 console.log('Listening on port ' + port);
