@@ -34,6 +34,7 @@ app.get('/api/result', function(req, res) {
     }
   });
 });
+
  
 // get geocode latlong data
 app.get('/api/route', function(req, res) {
