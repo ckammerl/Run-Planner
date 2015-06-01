@@ -24,7 +24,8 @@ angular.module("runPlannerApp", [
         // child;
         /** viewname@statename: viewname is the name used in the view directive;  state name is the state's absolute name, e.g. result or contact.item. */
         "weather@result": {
-          templateUrl: "views/result/result.weather.html"
+          templateUrl: "views/result/result.weather.html",
+          controller: "WeatherController"
         },
         // child
         "map@result": {
