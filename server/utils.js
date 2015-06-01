@@ -21,6 +21,17 @@ module.exports = {
       tempScore -= 10;
     }
     return Math.round(tempScore);
+  },
+  getTempString: function(tempScore) {
+    var tempString = 'temp';
+    if (tempScore < 30) {
+      tempString += 30;
+    } else if (tempScore > 60) {
+      tempString += 60;
+    } else {
+      tempString += Math.round(tempScore / 10) * 10;
+    }
+    return tempString;
   }
 }
 // result.temp = {'F': Math.round(JSON.parse(body).main.temp), 'C': Math.round(utils.convertToMetric(JSON.parse(body).main.temp))};
