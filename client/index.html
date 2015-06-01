@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="runPlannerApp" class="no-js">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Run Planner App</title>
-</head>
-<body>
-  <div class="nav">
-    <h1>Run Planner</h1>
-    <a ui-sref="search">Search</a>
-    <a ui-sref="result">Result</a>
-  </div>
+<html lang='en' ng-app='runPlannerApp' class='no-js'>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Run Planner App</title>
+  </head>
+  <body>
+    <div class='nav'>
+      <h1>Run Planner</h1>
+      <a ui-sref='search'>Search</a>
+      <a ui-sref='result'>Result</a>
+    </div>
 
-  <div ui-view></div>
-
+    <div ui-view></div>
 
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -21,6 +20,7 @@
   <script src="views/search/search.js"></script>
   <script src="views/services/services.js"></script>
   <script src="views/result/result.weather.js"></script>
+  <script src='views/result/result.clothing.js'></script>
 
-</body>
+  </body>
 </html>
