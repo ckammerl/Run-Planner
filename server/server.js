@@ -14,9 +14,12 @@ app.use(bodyParser.json());
 // use port 3000 on your local environment.
 var port = process.env.PORT || 3000;
 
+app.use(express.static(__dirname + '/../client'));
+
 // api requests
 // get weather data
-app.get('/api/result', function(req, res){
+app.get('/api/result', function(req, res) {
+  console.log(req.query);
   var zipCode = req.body.startLocation.zipCode || 94704; // maybe change .data
   var result = {};
   var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + 'us&units=Imperial';
@@ -31,7 +34,25 @@ app.get('/api/result', function(req, res){
       console.error(error);
     }
   });
+}); 
+
+ 
+// get geocode latlong data
+app.get('/api/route', function(req, res) {
+  var address = req.body.startLocation.address || '611 Mission St, San Francisco, CA 94105';
+  address = address.replace(' ', '+');
+  var coordinates = {};
+  var url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=';
+  request(url, function(error, response, body) {
+    if (!error && res.statusCode === 200) {
+      coordinates = JSON.parse(body).results[0].geometry.location;
+      res.json(coordinates);
+    } else {
+      console.error(error);
+    }
+  });
 });
 
 app.listen(port);
 console.log('Listening on port ' + port);
+

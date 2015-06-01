@@ -1,4 +1,3 @@
-
 // Declare app level module which depends on views, and components
 angular.module('runPlannerApp', [
   'ui.router'
@@ -8,9 +7,10 @@ angular.module('runPlannerApp', [
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('search', {
-      url: '/',
-      templateUrl: 'views/search.html'
+    .state("search", {
+      url: "/",
+      templateUrl: "views/search/search.html",
+      controller: "SearchController"
     })
 
     .state('result', {
