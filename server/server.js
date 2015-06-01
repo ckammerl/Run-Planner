@@ -33,7 +33,7 @@ app.get('/api/result', function(req, res) {
       console.error(error);
     }
   });
-});
+}); 
 
  
 // get geocode latlong data
