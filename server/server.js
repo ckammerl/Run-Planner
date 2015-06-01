@@ -34,7 +34,7 @@ app.get('/api/result', function(req, res) {
     }
   });
 });
-
+ 
 // get geocode latlong data
 app.get('/api/route', function(req, res) {
   var address = req.body.startLocation.address || '611 Mission St, San Francisco, CA 94105';
