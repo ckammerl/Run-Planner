@@ -1,4 +1,4 @@
-angular.module("runPlannerApp.search", [])
+angular.module("runPlannerApp")
 
 .controller("SearchController", function($scope, Search, $state) {
   $scope.sendInput = function() {

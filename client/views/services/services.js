@@ -1,4 +1,4 @@
-angular.module("runPlannerApp.services", [])
+angular.module("runPlannerApp")
 
 .factory("Search", function($http){
 
@@ -7,9 +7,9 @@ angular.module("runPlannerApp.services", [])
     // var data = JSON.stringify(searchInput);
     // console.log('the input that is being sent to api', data);
     return $http({
-      method: 'POST',
+      method: 'GET',
       url: '/api/result',
-      data: searchInput
+      params: searchInput
     })
     .then(function(response) {
       return response.data;
