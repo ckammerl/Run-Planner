@@ -35,7 +35,6 @@ app.get('/api/weather', function(req, res){
   });
 });
 
-
 // get geocode latlong data
 app.get('/api/route', function(req, res) {
   var address = req.body.startLocation.address || '611 Mission St, San Francisco, CA 94105';
@@ -51,6 +50,7 @@ app.get('/api/route', function(req, res) {
     }
   });
 });
+
 // get clothes images
 app.get('/api/clothing', function(req, res){
   var weather = req.query.weather;
