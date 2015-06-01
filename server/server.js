@@ -51,43 +51,20 @@ app.get('/api/route', function(req, res) {
     }
   });
 });
-
+// get clothes images
 app.get('/api/clothing', function(req, res){
   var weather = req.query.weather;
-  var gender = req.query.gender;
-  var clothes = {};
+  var gender = req.query.gender.toLowerCase();
   var tempScore = utils.calcTempScore(weather);
-  // use tempscore to access the clothing database and return a piece of clothing
-  db.findOne({gender: gender.toLowerCase()}, function(err, clothes) {
+  db.findOne({gender: gender}, function(err, clothes) {
     if (err) {
       return console.error(err);
     }
-    console.log(clothes);
-  })
-
-
-
-
-  request(url, function(error, response, body) {
-    if (!error && res.statusCode === 200) {
-      res.json(clothes);
-    } else {
-      console.error(error);
-    }
+    var clothesKey = utils.getTempString(tempScore);
+    console.log(clothesKey);
+    res.json(clothes[clothesKey]);
   });
 });
-
-app.post('/test', function(req, res) {
-  console.log(req.body.gender);
-  var gender = req.body.gender.toLowerCase();
-  db.findOne({gender: gender}, function(err, clothes) {
-    console.log(clothes);
-    if (err) {
-      return console.error(err);
-    }
-  })
-  res.json("hi");
-})
 
 app.listen(port);
 console.log('Listening on port ' + port);
