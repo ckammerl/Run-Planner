@@ -6,6 +6,7 @@ var http = require('http');
 var utils = require('./utils.js');
 // var weather = require('db.js');
 
+app.use(express.static(__dirname + "/../client"));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
