@@ -1,6 +1,6 @@
 angular.module("runPlannerApp")
 
-.factory("Search", function($http){
+.factory("Search", function($http) {
 
   var sendInput = function(searchInput) {
 
