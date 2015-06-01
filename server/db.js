@@ -71,7 +71,7 @@ mensClothes.save(function(err, clothes) {
 
 // insert women's clothes data into the mongo database
 var womensClothes = new Clothes({
-  gender: 'male',
+  gender: 'female',
   temp30: {
     top: 'http://static.parastorage.com/media/13160d_e13d83e048dd42818572725427fe5952.png_256',
     bottom: 'http://i00.i.aliimg.com/wsphoto/v0/32315814164_1/2015-New-Joggers-font-b-Pants-b-font-Sport-Men-font-b-Pants-b-font-Casual.jpg'
