@@ -33,22 +33,23 @@ app.get('/api/result', function(req, res) {
       console.error(error);
     }
   });
-}); 
+});
 
- 
 // get geocode latlong data
 app.get('/api/route', function(req, res) {
-  var startAddress = req.body.startLocation || '611 Mission St, San Francisco, CA 94105';
+  var startAddress = req.query.start || '611 Mission Street, San Francisco, CA';
   startAddress = startAddress.replace(' ', '+');
-  // check if there is an end address. If no end address, then need to make a route
-  if (req.body.destinationLocation) {
-    var destAddress = req.body.destinationLocation || null;
-    destAddress = destAddress.replace(' ', '+');
-  }
-  var distance = req.body.distance || 3;
+  var distance = req.query.distance || 3;
   var coordinates = {};
   var start = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + startAddress + '&key=';
-  var end = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + destAddress + '&key=';
+
+  // check if there is an end address. If no end address, then need to make a route
+  if (req.query.end) {
+    var destAddress = req.query.end || null;
+    destAddress = destAddress.replace(' ', '+');
+    var end = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + destAddress + '&key=';
+  }
+
   var getStart = function(callback) {
     return request(start, function(error, response, body) {
       if (!error && res.statusCode === 200) {
@@ -58,10 +59,10 @@ app.get('/api/route', function(req, res) {
         console.error(error);
       }
     })
-  }
+  };
+
   getStart(function(startPoint) {
       coordinates.start = startPoint;
-      console.log('line 63 the startpoint is ', coordinates.start);
       if (destAddress) {
         request(end, function(error, response, body) {
           if (!error && res.statusCode === 200) {
@@ -72,24 +73,24 @@ app.get('/api/route', function(req, res) {
           }
         });
       } else {
-        coordinates.wayPoints = [];
-        // 0.01 in longitude is 1.2 miles in san francisco
+        // 0.01 change in longitude is 1.2 miles in san francisco
         var longConvert = function(longitude) { // converts distance up into how much to add to longitude
           return longitude * 0.00833333333;
         }
-        // 0.01 in lattitude is 0.6 miles in san francisco
+        // 0.01 change in lattitude is 0.6 miles in san francisco
         var latConvert = function(lattitude) {
           return lattitude * 0.01666666666;
         }
-        // distance is 3
-        // need to determine a distUp, and distDown that will route back to start with a distance of about 3
-        // create a route in a triangle shape with each side whose ratios are 3:4:5
-        var trianglePerim = distance/12; 
-        var distUp = longConvert(3 * trianglePerim);
-        var distLeft = latConvert(4 * trianglePerim);
+
+        coordinates.wayPoints = [];
+        var routeDist = distance/4; 
+        var upCoord = {'lat': coordinates.start.lat + longConvert(routeDist), 'lng':coordinates.start.lng};
+        var rightCoord = {'lat': upCoord.lat, 'lng':upCoord.lng + latConvert(routeDist)};
+        var downCoord = {'lat': rightCoord.lat - longConvert(routeDist), 'lng':rightCoord.lng};
+
         coordinates.wayPoints.push({'lat':coordinates.start.lat + distUp, 'lng':coordinates.start.lng});
-        coordinates.wayPoints.push({'lat':coordinates.start.lat, 'lng':coordinates.start.lng + distLeft});
-        console.log('waypoints are', coordinates.wayPoints);
+        coordinates.wayPoints.push({'lat':coordinates.start.lat + distUp, 'lng':coordinates.start.lng + distLeft});
+
         res.json(coordinates);
       }
     })
