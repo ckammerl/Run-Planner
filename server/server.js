@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var http = require('http');
 var utils = require('./utils.js');
-// var weather = require('db.js');
+var db = require('./db.js');
 
 app.use(express.static(__dirname + "/../client"));
 
@@ -16,11 +16,10 @@ var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../client'));
 
-// api requests
+// API REQUESTS
 // get weather data
-app.get('/api/result', function(req, res) {
-  console.log(req.query);
-  var zipCode = req.body.startLocation.zipCode || 94704; // maybe change .data
+app.get('/api/weather', function(req, res){
+  var zipCode = req.query.startLocation.zipCode || 94704; // maybe change .data
   var result = {};
   var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + 'us&units=Imperial';
   request(url, function(error, response, body) {
@@ -34,9 +33,9 @@ app.get('/api/result', function(req, res) {
       console.error(error);
     }
   });
-}); 
+});
 
- 
+
 // get geocode latlong data
 app.get('/api/route', function(req, res) {
   var address = req.body.startLocation.address || '611 Mission St, San Francisco, CA 94105';
@@ -52,6 +51,43 @@ app.get('/api/route', function(req, res) {
     }
   });
 });
+
+app.get('/api/clothing', function(req, res){
+  var weather = req.query.weather;
+  var gender = req.query.gender;
+  var clothes = {};
+  var tempScore = utils.calcTempScore(weather);
+  // use tempscore to access the clothing database and return a piece of clothing
+  db.findOne({gender: gender.toLowerCase()}, function(err, clothes) {
+    if (err) {
+      return console.error(err);
+    }
+    console.log(clothes);
+  })
+
+
+
+
+  request(url, function(error, response, body) {
+    if (!error && res.statusCode === 200) {
+      res.json(clothes);
+    } else {
+      console.error(error);
+    }
+  });
+});
+
+app.post('/test', function(req, res) {
+  console.log(req.body.gender);
+  var gender = req.body.gender.toLowerCase();
+  db.findOne({gender: gender}, function(err, clothes) {
+    console.log(clothes);
+    if (err) {
+      return console.error(err);
+    }
+  })
+  res.json("hi");
+})
 
 app.listen(port);
 console.log('Listening on port ' + port);
