@@ -13,10 +13,7 @@ app.use(bodyParser.json());
 // use port 3000 on your local environment.
 var port = process.env.PORT || 3000;
 
-console.log(__dirname + '/../client');
-
 app.use(express.static(__dirname + '/../client'));
-
 
 // api requests
 // get weather data
@@ -37,7 +34,6 @@ app.post('/api/result', function(req, res){
     }
   });
 });
-
 
 
 app.listen(port);
