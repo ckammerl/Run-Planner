@@ -2,9 +2,6 @@ angular.module('runPlannerApp')
 
 .controller('SearchController', function($scope, $state, Search) {
 
-<<<<<<< HEAD
-.controller("SearchController", function($scope, Search, $state, $stateParams) {
-
   // on submission, 
     // geo locate the 
     // send /api/weather a zip code
