@@ -53,7 +53,6 @@ app.get('/api/route', function(req, res) {
   var getStart = function(callback) {
     return request(start, function(error, response, body) {
       if (!error && res.statusCode === 200) {
-        console.log('line 55 coordinates start are', JSON.parse(body).results[0].geometry.location);
         callback(JSON.parse(body).results[0].geometry.location);
       } else {
         console.error(error);
@@ -73,23 +72,15 @@ app.get('/api/route', function(req, res) {
           }
         });
       } else {
-        // 0.01 change in longitude is 1.2 miles in san francisco
-        var longConvert = function(longitude) { // converts distance up into how much to add to longitude
-          return longitude * 0.00833333333;
-        }
-        // 0.01 change in lattitude is 0.6 miles in san francisco
-        var latConvert = function(lattitude) {
-          return lattitude * 0.01666666666;
-        }
-
         coordinates.wayPoints = [];
         var routeDist = distance/4; 
-        var upCoord = {'lat': coordinates.start.lat + longConvert(routeDist), 'lng':coordinates.start.lng};
-        var rightCoord = {'lat': upCoord.lat, 'lng':upCoord.lng + latConvert(routeDist)};
-        var downCoord = {'lat': rightCoord.lat - longConvert(routeDist), 'lng':rightCoord.lng};
+        var upCoord = {'lat': coordinates.start.lat + utils.longConvert(routeDist), 'lng':coordinates.start.lng};
+        var rightCoord = {'lat': upCoord.lat, 'lng':upCoord.lng + utils.latConvert(routeDist)};
+        var downCoord = {'lat': rightCoord.lat - utils.longConvert(routeDist), 'lng':rightCoord.lng};
 
-        coordinates.wayPoints.push({'lat':coordinates.start.lat + distUp, 'lng':coordinates.start.lng});
-        coordinates.wayPoints.push({'lat':coordinates.start.lat + distUp, 'lng':coordinates.start.lng + distLeft});
+        coordinates.wayPoints.push(upCoord);
+        coordinates.wayPoints.push(rightCoord);
+        coordinates.wayPoints.push(downCoord);
 
         res.json(coordinates);
       }

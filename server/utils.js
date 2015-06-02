@@ -1,4 +1,6 @@
 var db = require('./db.js')
+var request = require('request');
+
 
 
 module.exports = {
@@ -32,6 +34,15 @@ module.exports = {
       tempString += Math.round(tempScore / 10) * 10;
     }
     return tempString;
+  },
+
+  // 0.01 change in longitude is 1.2 miles in san francisco(only works in san francisco)
+  longConvert: function(longitude) { // converts distance up into how much to add to longitude
+    return longitude * 0.00833333333;
+  },
+  // 0.01 change in lattitude is 0.6 miles in san francisco(only works in san francisco)
+  latConvert: function(lattitude) {
+    return lattitude * 0.01666666666;
   }
 }
 // result.temp = {'F': Math.round(JSON.parse(body).main.temp), 'C': Math.round(utils.convertToMetric(JSON.parse(body).main.temp))};
