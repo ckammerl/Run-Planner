@@ -13,6 +13,7 @@
   "private": true,
   "dependencies": {
     "angular": "1.2.x",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "angular-google-maps": "~2.1.1"
   }
 }
