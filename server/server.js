@@ -37,18 +37,54 @@ app.get('/api/weather', function(req, res){
 
 // get geocode latlong data
 app.get('/api/route', function(req, res) {
-  var address = req.body.startLocation.address || '611 Mission St, San Francisco, CA 94105';
-  address = address.replace(' ', '+');
+  var startAddress = req.query.start || '611 Mission Street, San Francisco, CA';
+  startAddress = startAddress.replace(' ', '+');
+  var distance = req.query.distance || 3;
   var coordinates = {};
-  var url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=';
-  request(url, function(error, response, body) {
-    if (!error && res.statusCode === 200) {
-      coordinates = JSON.parse(body).results[0].geometry.location;
-      res.json(coordinates);
-    } else {
-      console.error(error);
-    }
-  });
+  var start = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + startAddress + '&key=';
+
+  // check if there is an end address. If no end address, then need to make a route
+  if (req.query.end) {
+    var destAddress = req.query.end || null;
+    destAddress = destAddress.replace(' ', '+');
+    var end = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + destAddress + '&key=';
+  }
+
+  var getStart = function(callback) {
+    return request(start, function(error, response, body) {
+      if (!error && res.statusCode === 200) {
+        callback(JSON.parse(body).results[0].geometry.location);
+      } else {
+        console.error(error);
+      }
+    })
+  };
+
+  getStart(function(startPoint) {
+      coordinates.start = startPoint;
+      if (destAddress) {
+        request(end, function(error, response, body) {
+          if (!error && res.statusCode === 200) {
+            coordinates.end = JSON.parse(body).results[0].geometry.location;
+            res.json(coordinates);
+          } else {
+            console.error(error);
+          }
+        });
+      } else {
+        coordinates.wayPoints = [];
+        var routeDist = distance/4; 
+        var upCoord = {'lat': coordinates.start.lat + utils.longConvert(routeDist), 'lng':coordinates.start.lng};
+        var rightCoord = {'lat': upCoord.lat, 'lng':upCoord.lng + utils.latConvert(routeDist)};
+        var downCoord = {'lat': rightCoord.lat - utils.longConvert(routeDist), 'lng':rightCoord.lng};
+
+        coordinates.wayPoints.push(upCoord);
+        coordinates.wayPoints.push(rightCoord);
+        coordinates.wayPoints.push(downCoord);
+
+        res.json(coordinates);
+      }
+    })
 });
 
 // get clothes images
