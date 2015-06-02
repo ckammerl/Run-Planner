@@ -16,10 +16,20 @@ angular.module('runPlannerApp', [
     .state('result', {
       url: '/result',
       params: {
+        //weather
         celsius: null,
         fahrenheit: null,
         humidity: null,
-        wind: null
+        wind: null,
+        //route
+        startLat: null,
+        startLng: null,
+        upCoordLat: null,
+        upCoordLng: null,
+        rightCoordLat: null,
+        rightCoordLng: null,
+        downCoordLat: null,
+        downCoordLng: null
       },
       views: {
         // root
