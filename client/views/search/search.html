@@ -1,9 +1,13 @@
 <div>
   <hr/>
-  <form novalidate ng-submit="sendInput(search)">
+  <form novalidate ng-submit="sendInput()">
     <h2>Where you runnin'?</h2>
-    <input type="text" placeholder="address, city, zip code, etc." ng-model="search.startLocation" />
+    <div><input type="text" placeholder="611 Mission St. San Francisco, CA 94105" ng-model="search.start" /></div>
+    <div><input type="text" placeholder="611 Mission St. San Francisco, CA 94105" ng-model="search.end" /></div>
+    <div><input type="text" placeholder="94105" ng-model="search.zipCode" /></div>
+    <div><input type="text" placeholder="3" ng-model="search.distance" />miles</div>
     {{search | json}}
     <input type="submit" value="submit" />
   </form>
+  <p>state params {{ stateParams }}</p>
 </div>
