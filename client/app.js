@@ -7,18 +7,24 @@ angular.module('runPlannerApp', [
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state("search", {
-      url: "/",
-      templateUrl: "views/search/search.html",
-      controller: "SearchController"
+    .state('search', {
+      url: '/',
+      templateUrl: 'views/search/search.html',
+      controller: 'SearchController'
     })
 
     .state('result', {
       url: '/result',
+      params: {
+        celsius: null,
+        fahrenheit: null,
+        humidity: null,
+        wind: null
+      },
       views: {
         // root
         '': {
-          templateUrl: 'views/result/result.html'
+          templateUrl: 'views/result/result.html',
         },
         // child;
         /** viewname@statename: viewname is the name used in the view directive;  state name is the state's absolute name, e.g. result or contact.item. */

@@ -1,9 +1,9 @@
 <div>
   <hr/>
-  <form novalidate ng-submit="sendInput(search)">
+  <form novalidate ng-submit='sendInput()'>
     <h2>Where you runnin'?</h2>
-    <input type="text" placeholder="address, city, zip code, etc." ng-model="search.startLocation" />
-    {{search | json}}
-    <input type="submit" value="submit" />
+    <input type='text' placeholder='611 Mission St, San Francisco, CA 94105' ng-model='search.start' />
+    <!-- {{search | json}} -->
+    <input type='submit' value='submit' />
   </form>
 </div>
