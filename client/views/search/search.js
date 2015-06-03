@@ -8,7 +8,7 @@ angular.module('runPlannerApp')
         Search.getWeather(zipCode)
           .then(function(weather) {
             console.log('switching to result state with weather: ', weather);
-            $state.go('result');
+            $state.go('result', weather);
             $rootScope.weather = weather;
             Search.getClothing($scope.search.gender, weather)
               .then(function(clothing) {
