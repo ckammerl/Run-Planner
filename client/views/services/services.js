@@ -1,22 +1,79 @@
-angular.module("runPlannerApp")
+angular.module('runPlannerApp')
 
-.factory("Search", function($http) {
+.factory('Search', function($http) {
 
-  var sendInput = function(searchInput) {
-
-    // var data = JSON.stringify(searchInput);
-    // console.log('the input that is being sent to api', data);
+  var getZipCode = function(searchInput) {
     return $http({
       method: 'GET',
-      url: '/api/result',
-      params: searchInput
+      url: 'https://maps.googleapis.com/maps/api/geocode/json',
+      params: {address: searchInput.start}
     })
     .then(function(response) {
-      return response.data;
+      var zipCodeObj = response.data.results[0].address_components.filter(function(obj){return obj.types[0] === "postal_code"});
+      var zipCode = zipCodeObj[0].long_name;
+      return zipCode;
     })
   };
 
+  var getWeather = function(zipCode) {
+    return $http({
+      method: 'GET',
+      url: '/api/weather',
+      params: {zipCode: zipCode}
+    })
+    .then(function(response) {
+      var weatherData = response.data;
+      var weather = {
+        celsius: weatherData.temp.C,
+        fahrenheit: weatherData.temp.F,
+        humidity: weatherData.humidity,
+        wind: weatherData.wind.speed,
+        weather: weatherData.weather
+      }
+      return weather;
+    })
+  }
+
+  var getRoute = function(searchInput) {
+    return $http({
+      method: 'GET',
+      url: '/api/route',
+      params: searchInput
+    })
+    .then(function(response) {
+      var routeData = response.data;
+      var route = {
+        startLat: routeData.start.lat,
+        startLng: routeData.start.lng,
+        upCoordLat: routeData.wayPoints[0].lat,
+        upCoordLng: routeData.wayPoints[0].lng,
+        rightCoordLat: routeData.wayPoints[1].lat,
+        rightCoordLng: routeData.wayPoints[1].lng,
+        downCoordLat: routeData.wayPoints[2].lat,
+        downCoordLng: routeData.wayPoints[2].lng
+      }
+      return route;
+    })
+  }
+
+  var getClothing = function(gender, weather) {
+    var dataForClothing = weather;
+    dataForClothing.gender = gender;
+    return $http({
+      method: 'GET',
+      url: '/api/clothing',
+      params: dataForClothing
+    })
+    .then(function(response) {
+      return response.data;
+      
+    })
+  }
+
   return {
-    sendInput: sendInput
+    getZipCode: getZipCode,
+    getWeather: getWeather,
+    getRoute: getRoute,
+    getClothing: getClothing
   };
 })

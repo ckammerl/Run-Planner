@@ -1,5 +1,6 @@
 angular.module('runPlannerApp')
 
+
   .controller('WeatherController', function($scope, $stateParams) {
     //final version
     $scope.celsius = $stateParams.celsius;

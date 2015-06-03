@@ -8,9 +8,9 @@ module.exports = {
     return (temp  - 32) * 5 / 9;
   },
   calcTempScore: function(weatherObject) {
-    var tempScore = weatherObject.temp.F;
-    // console.log(weatherObject.wind.speed)
-    tempScore -= weatherObject.wind.speed / 3;
+    var tempScore = weatherObject.fahrenheit;
+    console.log(weatherObject);
+    tempScore -= weatherObject.wind / 3;
     if (weatherObject.weather.toLowerCase().indexOf('cloud') !== -1) {
       tempScore -= 5;
     } else if (weatherObject.weather.toLowerCase().indexOf('rain') !== -1) {

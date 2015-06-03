@@ -18,8 +18,7 @@ app.use(express.static(__dirname + '/../client'));
 
 // API REQUESTS
 // get weather data
-<<<<<<< HEAD
-app.get('/api/result', function(req, res){
+app.get('/api/weather', function(req, res){
   var zipCode = req.query.zipCode || 94704; // maybe change .data
   var result = {};
   var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + 'us&units=Imperial';
@@ -29,6 +28,7 @@ app.get('/api/result', function(req, res){
       result.humidity = JSON.parse(body).main.humidity;
       result.wind = JSON.parse(body).wind;
       result.weather = JSON.parse(body).weather[0].main;
+      result.zipCode = zipCode;
       res.json(result);
     } else {
       console.error(error);
@@ -92,7 +92,7 @@ app.get('/api/route', function(req, res) {
 app.get('/api/clothing', function(req, res){
   var weather = req.query.weather;
   var gender = req.query.gender.toLowerCase();
-  var tempScore = utils.calcTempScore(weather);
+  var tempScore = utils.calcTempScore(req.query);
   db.findOne({gender: gender}, function(err, clothes) {
     if (err) {
       return console.error(err);

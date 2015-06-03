@@ -1,13 +1,14 @@
 <div>
   <hr/>
-  <form novalidate ng-submit="sendInput()">
+  <form novalidate ng-submit="useSearchToGetResult()">
     <h2>Where you runnin'?</h2>
     <div><input type="text" placeholder="611 Mission St. San Francisco, CA 94105" ng-model="search.start" /></div>
-    <div><input type="text" placeholder="611 Mission St. San Francisco, CA 94105" ng-model="search.end" /></div>
-    <div><input type="text" placeholder="94105" ng-model="search.zipCode" /></div>
     <div><input type="text" placeholder="3" ng-model="search.distance" />miles</div>
-    {{search | json}}
+    <div>
+      <input type="radio" name="gender" value="male" ng-model="search.gender" checked>Male
+      <input type="radio" name="gender" ng-model="search.gender" value="female">Female
+    </div>
     <input type="submit" value="submit" />
+    {{search | json}}
   </form>
-  <p>state params {{ stateParams }}</p>
 </div>

@@ -1,21 +1,28 @@
 angular.module('runPlannerApp')
 
-.controller('SearchController', function($scope, $state, Search) {
+.controller('SearchController', function($scope, $state, Search, $rootScope) {
 
-  // on submission, 
-    // geo locate the 
-    // send /api/weather a zip code
-      // once that comes back 
-        // send state the weather
-        // send the weather to the clothing api
-          // send the result state
-
-  $scope.sendInput = function() {
-    Search.sendInput($scope.search)
-      .then(function(resultFromAPI) {
-        console.log('result in search controller is:', resultFromAPI);
-        $state.go("result", {tempC: 44, tempF: 60, humidity: 65, wind: 55.3});
-        $state.go('result', { celsius: 25, fahrenheit: 80, humidity: 55, wind: 73.5 });
+  $scope.useSearchToGetResult = function() {
+    Search.getZipCode($scope.search)
+      .then(function(zipCode) {
+        Search.getWeather(zipCode)
+          .then(function(weather) {
+            console.log('switching to result state with weather: ', weather);
+            $state.go('result');
+            $rootScope.weather = weather;
+            Search.getClothing($scope.search.gender, weather)
+              .then(function(clothing) {
+                console.log('switching to result state with clothing: ', clothing);
+                $rootScope.clothing = clothing;
+                $state.go('result', clothing);
+              })
+          })
+      })
+    Search.getRoute($scope.search)
+      .then(function(route) {
+        console.log('switching to result state with route: ', route);
+        $rootScope.route = route;
+        $state.go('result', route);
       })
   }
 
