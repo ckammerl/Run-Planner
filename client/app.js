@@ -15,30 +15,10 @@ angular.module('runPlannerApp', [
 
     .state('result', {
       url: '/result',
-      params: {
-        // weather
-        celsius: null,
-        fahrenheit: null,
-        humidity: null,
-        wind: null,
-        weather: null,
-        // route
-        startLat: null,
-        startLng: null,
-        upCoordLat: null,
-        upCoordLng: null,
-        rightCoordLat: null,
-        rightCoordLng: null,
-        downCoordLat: null,
-        downCoordLng: null,
-        // clothing
-        bottom: null,
-        top: null
-      },
       views: {
         // root
         '': {
-          templateUrl: 'views/result/result.html'
+          templateUrl: 'views/result/result.html',
         },
         // child;
         /** viewname@statename: viewname is the name used in the view directive;  state name is the state's absolute name, e.g. result or contact.item. */

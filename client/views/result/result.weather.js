@@ -1,10 +1,10 @@
 angular.module('runPlannerApp')
 
+  .controller('WeatherController', function($scope, ResultHandler) {
 
-  .controller('WeatherController', function($scope, $stateParams) {
-    //final version
-    $scope.celsius = $stateParams.celsius;
-    $scope.fahrenheit = $stateParams.fahrenheit;
-    $scope.humidity = $stateParams.humidity;
-    $scope.wind = $stateParams.wind;
+    $scope.celsius = ResultHandler.weather.celsius;
+    $scope.fahrenheit = ResultHandler.weather.fahrenheit;
+    $scope.humidity = ResultHandler.weather.humidity;
+    $scope.wind = ResultHandler.weather.wind;
+    $scope.weather = ResultHandler.weather.weather;
   });
