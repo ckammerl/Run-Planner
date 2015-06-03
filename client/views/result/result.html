@@ -1,13 +1,12 @@
-<!-- partials/result.html -->
-<hr/>
-<h1>The Results</h1>
-
-
 <div class='result'>
-  <div ui-view='weather'></div>
-  <div ui-view='map'></div>
-  <div ui-view='clothing'></div>
-</div>
+
+  <div ui-view='map' id='map'></div>
+  <div id='info'>
+    <div ui-view='weather' id='weather'></div>
+    <div ui-view='clothing' id='clothing'></div>
+  </div>
+
+</div> <!-- result -->
 
 
 

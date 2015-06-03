@@ -16,7 +16,7 @@ angular.module('runPlannerApp')
   $scope.lat = $stateParams.startLat || 37.7875176;
   $scope.lng = $stateParams.startLng || -122.3998683;
 
-  $scope.map = { center: { latitude: $scope.lat, longitude: $scope.lng }, zoom: 13 };
+  $scope.map = { center: { latitude: $scope.lat, longitude: $scope.lng }, zoom: 14 };
   $scope.options = {scrollwheel: false};
 
   $scope.polygons =
@@ -25,20 +25,20 @@ angular.module('runPlannerApp')
         id: 1,
         path: [
             {
-                latitude: $stateParams.upCoordLat,
-                longitude: $stateParams.upCoordLng
+                latitude: $stateParams.upCoordLat || 37.7937675999975,
+                longitude: $stateParams.upCoordLng || -122.3998683
             },
             {
-                latitude: $stateParams.rightCoordLat,
-                longitude: $stateParams.rightCoordLng
+                latitude: $stateParams.rightCoordLat || 37.7937675999975,
+                longitude: $stateParams.rightCoordLng || -122.387368300005
             },
             {
-                latitude: $stateParams.downCoordLat,
-                longitude: $stateParams.downCoordLng
+                latitude: $stateParams.downCoordLat || 37.7875176,
+                longitude: $stateParams.downCoordLng || -122.387368300005
             }
         ],
         stroke: {
-            color: '#000000',
+            color: '#161669',
             weight: 3
         },
         editable: true,
