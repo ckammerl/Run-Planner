@@ -1,10 +1,12 @@
-<div>in patial result.map</div>
 <h3>Your Route</h3>
 
-<div id='map'>
-    <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'></ui-gmap-google-map>
-</div>
+  <div id='map-canvas'>
+      <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'>
+         <ui-gmap-polygon static="true" ng-repeat="p in polygons track by p.id" path="p.path" stroke="p.stroke" visible="p.visible" geodesic="p.geodesic" fill="p.fill" fit="false" editable="p.editable" draggable="p.draggable">
+        </ui-gmap-polygon>
+      </ui-gmap-google-map>
+  </div>
 
-<hr>
+
 
 
