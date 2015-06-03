@@ -1,6 +1,6 @@
 angular.module('runPlannerApp')
 
-.controller('SearchController', function($scope, $state, Search, $rootScope) {
+.controller('SearchController', function($scope, $state, Search, ResultHandler) {
 
   $scope.useSearchToGetResult = function() {
     Search.getZipCode($scope.search)
@@ -8,21 +8,24 @@ angular.module('runPlannerApp')
         Search.getWeather(zipCode)
           .then(function(weather) {
             console.log('switching to result state with weather: ', weather);
-            $state.go('result', weather);
-            $rootScope.weather = weather;
+            ResultHandler.setWeather(weather);
+            // console.log('ResultHandler weather', ResultHandler.weather);
             Search.getClothing($scope.search.gender, weather)
               .then(function(clothing) {
                 console.log('switching to result state with clothing: ', clothing);
-                $rootScope.clothing = clothing;
-                $state.go('result', clothing);
+                ResultHandler.setClothing(clothing);
+                 // console.log('ResultHandler clothing', ResultHandler.clothing);
+
+                // weather, clothing and route now available => switch view:
+                $state.go('result');
               })
           })
       })
     Search.getRoute($scope.search)
       .then(function(route) {
         console.log('switching to result state with route: ', route);
-        $rootScope.route = route;
-        $state.go('result', route);
+        ResultHandler.setRoute(route);
+        // console.log('ResultHandler route', ResultHandler.route);
       })
   }
 
