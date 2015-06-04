@@ -73,20 +73,20 @@ mensClothes.save(function(err, clothes) {
 var womensClothes = new Clothes({
   gender: 'female',
   temp30: {
-    top: 'http://static.parastorage.com/media/13160d_e13d83e048dd42818572725427fe5952.png_256',
-    bottom: 'http://i00.i.aliimg.com/wsphoto/v0/32315814164_1/2015-New-Joggers-font-b-Pants-b-font-Sport-Men-font-b-Pants-b-font-Casual.jpg'
+    top: 'http://images.citysports.com/f/726/28361/24h/www.citysports.com/assets/product_images/229762_md.jpg',
+    bottom: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-14576525dt.jpg'
   },
   temp40: {
-    top: 'http://www.sweatvac.com/filebin/images/pzoom/tee-long-sleeve/Sweatvac-Race-Tee-Unisex-Long-Sleeve-White.jpg',
-    bottom: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-17716865v750.jpg'
+    top: 'http://nextadventure.net/images/detailed/7/White-Sierra-Marsh-Long-Sleeve-Tee-Shirt-Women\'s.jpg',
+    bottom: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-14576525dt.jpg'
   },
   temp50: {
-    top: 'http://site.topdogshirts.com/images/ss/790gold.jpg',
-    bottom: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-17716865v750.jpg'
+    top: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-17820366p275w.jpg',
+    bottom: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-10597172p275w.jpg'
   },
   temp60: {
-    top: 'http://site.topdogshirts.com/images/ss/790gold.jpg',
-    bottom: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-17716865v750.jpg'
+    top: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-17820366p275w.jpg',
+    bottom: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-10597172p275w.jpg'
   }
 });
 womensClothes.save(function(err, clothes) {
