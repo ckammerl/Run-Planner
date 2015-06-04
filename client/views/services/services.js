@@ -66,7 +66,7 @@ angular.module('runPlannerApp')
     })
     .then(function(response) {
       return response.data;
-      
+
     })
   }
 
@@ -77,3 +77,44 @@ angular.module('runPlannerApp')
     getClothing: getClothing
   };
 })
+
+
+.factory('ResultHandler', function() {
+  var weatherObj = {};
+  var clothingObj = {};
+  var routeObj = {};
+
+
+  var setWeather = function(resultApi) {
+    weatherObj.celsius = resultApi.celsius;
+    weatherObj.fahrenheit = resultApi.fahrenheit;
+    weatherObj.humidity = resultApi.humidity;
+    weatherObj.wind = resultApi.wind;
+    weatherObj.weather = resultApi.weather;
+  };
+
+  var setClothing = function(resultDb) {
+    clothingObj.top = resultDb.top;
+    clothingObj.bottom = resultDb.bottom;
+  };
+
+  var setRoute = function(resultApi) {
+    routeObj.startLat = resultApi.startLat;
+    routeObj.startLng = resultApi.startLng;
+    routeObj.upCoordLat = resultApi.upCoordLat;
+    routeObj.upCoordLng = resultApi.upCoordLng;
+    routeObj.rightCoordLat = resultApi.rightCoordLat;
+    routeObj.rightCoordLng = resultApi.rightCoordLng;
+    routeObj.downCoordLat = resultApi.downCoordLat;
+    routeObj.downCoordLng = resultApi.downCoordLng;
+  };
+
+  return {
+    setWeather: setWeather,
+    setClothing: setClothing,
+    setRoute: setRoute,
+    weather: weatherObj,
+    clothing: clothingObj,
+    route: routeObj
+  }
+});
