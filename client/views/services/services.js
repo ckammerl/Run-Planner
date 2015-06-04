@@ -95,7 +95,7 @@ angular.module('runPlannerApp')
 
   var setClothing = function(resultDb) {
     clothingObj.top = resultDb.top;
-    clothing.bottom = resultDb.bottom;
+    clothingObj.bottom = resultDb.bottom;
   };
 
   var setRoute = function(resultApi) {

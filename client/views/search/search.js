@@ -9,7 +9,7 @@ angular.module('runPlannerApp')
           .then(function(weather) {
             console.log('switching to result state with weather: ', weather);
             ResultHandler.setWeather(weather);
-            // console.log('ResultHandler weather', ResultHandler.weather);
+            // console.log('ResultHandl er weather', ResultHandler.weather);
             Search.getClothing($scope.search.gender, weather)
               .then(function(clothing) {
                 console.log('switching to result state with clothing: ', clothing);
