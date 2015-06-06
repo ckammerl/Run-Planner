@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang='en' ng-app='runPlannerApp' class='no-js'>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Run Planner App</title>
-  </head>
-  <body>
-    <div class='nav'>
-      <h1>Run Planner</h1>
-      <a ui-sref='search'>Search</a>
-      <a ui-sref='result'>Result</a>
-    </div>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Run Planner App</title>
+</head>
+<body>
+  <div class='nav'>
+    <h1 id="mainHeading">Run Planner</h1>
+    <a ui-sref='search'>Search</a>
+    <a ui-sref='result'>Result</a>
+  </div>
+  <hr/>
 
-    <div ui-view></div>
+  <div ui-view></div>
 
   <script src='bower_components/angular/angular.min.js'></script>
   <script src='bower_components/angular-ui-router/release/angular-ui-router.min.js'></script>
   <script src='https://maps.googleapis.com/maps/api/js?sensor=false'></script>
-  <script src='bower_components/lodash/dist/lodash.min.js'></script>
+  <script src='bower_components/lodash/lodash.min.js'></script>
   <script src='bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script>
   <script src='app.js'></script>
   <script src='views/search/search.js'></script>
@@ -26,5 +27,5 @@
   <script src='views/result/result.weather.js'></script>
   <script src='views/result/result.clothing.js'></script>
   <script src='views/result/result.map.js'></script>
-  </body>
+</body>
 </html>

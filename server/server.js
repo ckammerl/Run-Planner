@@ -10,7 +10,6 @@ app.use(express.static(__dirname + "/../client"));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-// use Heroku's default port number when deployed
 // use port 3000 on your local environment.
 var port = process.env.PORT || 3000;
 
@@ -19,7 +18,7 @@ app.use(express.static(__dirname + '/../client'));
 // API REQUESTS
 // get weather data
 app.get('/api/weather', function(req, res){
-  var zipCode = req.query.zipCode || 94704; // maybe change .data
+  var zipCode = req.query.zipCode || 94704;
   var result = {};
   var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + 'us&units=Imperial';
   request(url, function(error, response, body) {
@@ -74,7 +73,7 @@ app.get('/api/route', function(req, res) {
         });
       } else {
         coordinates.wayPoints = [];
-        var routeDist = distance/4; 
+        var routeDist = distance/4;
         var upCoord = {'lat': coordinates.start.lat + utils.longConvert(routeDist), 'lng':coordinates.start.lng};
         var rightCoord = {'lat': upCoord.lat, 'lng':upCoord.lng + utils.latConvert(routeDist)};
         var downCoord = {'lat': rightCoord.lat - utils.longConvert(routeDist), 'lng':rightCoord.lng};
@@ -98,7 +97,6 @@ app.get('/api/clothing', function(req, res){
       return console.error(err);
     }
     var clothesKey = utils.getTempString(tempScore);
-    console.log(clothesKey);
     res.json(clothes[clothesKey]);
   });
 });
