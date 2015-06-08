@@ -77,7 +77,7 @@ var womensClothes = new Clothes({
     bottom: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-14576525dt.jpg'
   },
   temp40: {
-    top: 'http://nextadventure.net/images/detailed/7/White-Sierra-Marsh-Long-Sleeve-Tee-Shirt-Women\'s.jpg',
+    top: "http://nextadventure.net/images/detailed/7/White-Sierra-Marsh-Long-Sleeve-Tee-Shirt-Women's.jpg",
     bottom: 'http://www.dickssportinggoods.com/graphics/product_images/pDSP1-14576525dt.jpg'
   },
   temp50: {
