@@ -1,10 +1,11 @@
 <div id='map-canvas'>
   <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'>
-    <ui-gmap-polygon static="true" ng-repeat="p in polygons track by p.id" path="p.path" stroke="p.stroke" visible="p.visible" geodesic="p.geodesic" fill="p.fill" fit="false" editable="p.editable" draggable="p.draggable">
-    </ui-gmap-polygon>
+  
   </ui-gmap-google-map>
-</div>
 
+  <iframe width="600" height="450" frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/directions?origin=" + {{lat,lng}} + "&destination=" + {{lat,lng}} + "&waypoints=" + {{upCoord.lat,upCoord.lng}} + "|" + {{rightCoord.lat,rightCoord.lng}} + "|" + {{downCoord.lat,downCoord.lng}} + "&travelMode=walking&key=AIzaSyCBVw8evllNw1FaR2OXfFQvmJ-8jBpKWAI"></iframe>
+</div>
 
 
 
