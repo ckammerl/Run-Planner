@@ -1,6 +1,6 @@
 // Declare app level module which depends on views, and components
 angular.module('runPlannerApp', [
-  'ui.router', 'uiGmapgoogle-maps', 'ngSanitize'
+  'ui.router', 'ngSanitize'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
