@@ -1,10 +1,6 @@
 <div id='map-canvas'>
-  <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'>
-  
-  </ui-gmap-google-map>
+  <div ng-bind-html="directionsHTML | toTrusted"></div>
 
-  <iframe width="600" height="450" frameborder="0" style="border:0"
-    src="https://www.google.com/maps/embed/v1/directions?origin=" + {{lat,lng}} + "&destination=" + {{lat,lng}} + "&waypoints=" + {{upCoord.lat,upCoord.lng}} + "|" + {{rightCoord.lat,rightCoord.lng}} + "|" + {{downCoord.lat,downCoord.lng}} + "&travelMode=walking&key=AIzaSyCBVw8evllNw1FaR2OXfFQvmJ-8jBpKWAI"></iframe>
 </div>
 
 
