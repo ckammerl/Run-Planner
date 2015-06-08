@@ -25,6 +25,7 @@
     "mocha": "^2.2.5",
     "mongoose": "~4.0.4",
     "request": "^2.56.0",
+    "should": "^6.0.3",
     "supertest": "^1.0.1"
   }
 }
