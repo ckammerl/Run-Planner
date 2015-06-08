@@ -18,7 +18,7 @@ app.use(express.static(__dirname + '/../client'));
 // API REQUESTS
 // get weather data
 app.get('/api/weather', function(req, res){
-  var zipCode = req.query.zipCode || 94704;
+  var zipCode = req.query.zipCode || 94704; // maybe change .data
   var result = {};
   var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + 'us&units=Imperial';
   request(url, function(error, response, body) {
