@@ -1,5 +1,5 @@
 html {
-    height: 100%;
+    height: 125%;
 }
 
 body {
@@ -105,10 +105,13 @@ input[type=text]:focus {
 }
 
 #map-canvas {
-    height: 600px;
-    width: 800px;
     position: relative;
     text-align: bottom;
+}
+
+iframe {
+    height: 600px;
+    width: 800px;
 }
 
 .angular-google-map-container {
