@@ -57,6 +57,10 @@ img {
     margin: 40px;
 }
 
+.error {
+  color: red;
+}
+
 input[type=submit] {
     padding: 30px;
     font-size: 25px;
