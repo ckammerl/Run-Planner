@@ -3,6 +3,9 @@ angular.module('runPlannerApp')
 .controller('SearchController', function($scope, $state, Search, ResultHandler) {
 
   $scope.useSearchToGetResult = function() {
+    $scope.addressError = false;
+    $scope.distanceError = false;
+    $scope.genderError = false;
     if ($scope.search) {
       if (!$scope.search.start) {
         $scope.addressError = true;
@@ -13,7 +16,7 @@ angular.module('runPlannerApp')
       if (!$scope.search.gender) {
         $scope.genderError = true;
       }
-      if ($scope.addressError && $scope.distanceError && $scope.genderError) {
+      if (!$scope.addressError && !$scope.distanceError && !$scope.genderError) {
         Search.getZipCode($scope.search)
         .then(function(zipCode) {
           Search.getWeather(zipCode)
