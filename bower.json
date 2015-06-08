@@ -1,0 +1,20 @@
+{
+  "name": "run-planner",
+  "version": "(0.0.0)",
+  "homepage": "(https://github.com/ClairvoyantChameleon/Run-Planner)",
+  "authors": [
+    "Shaan Shah",
+    "Christiane Kammerl",
+    "Chris Grovers",
+    "Nathan Lin"
+  ],
+  "description": "An app that tells you what to wear and what route to take when you run",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-ui-router": "~0.2.15",
+    "angular-google-maps": "~2.1.1",
+    "lodash": "~3.9.3"
+  }
+}
