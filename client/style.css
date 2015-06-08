@@ -90,6 +90,16 @@ input[type=text]:focus {
     border-radius: 20px;
 }
 
+#clothing {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#clothing h3, #weather h3, .clothing-item {
+  text-align: center;
+}
+
 #map-canvas {
     height: 400px;
     width: 600px;

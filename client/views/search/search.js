@@ -7,11 +7,9 @@ angular.module('runPlannerApp')
       .then(function(zipCode) {
         Search.getWeather(zipCode)
           .then(function(weather) {
-            console.log('switching to result state with weather: ', weather);
             ResultHandler.setWeather(weather);
             Search.getClothing($scope.search.gender, weather)
               .then(function(clothing) {
-                console.log('switching to result state with clothing: ', clothing);
                 ResultHandler.setClothing(clothing);
                 $state.go('result');
               })
@@ -19,7 +17,6 @@ angular.module('runPlannerApp')
       })
     Search.getRoute($scope.search)
       .then(function(route) {
-        console.log('switching to result state with route: ', route);
         ResultHandler.setRoute(route);
       })
   }

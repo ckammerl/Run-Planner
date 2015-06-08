@@ -59,6 +59,7 @@ angular.module('runPlannerApp')
   var getClothing = function(gender, weather) {
     var dataForClothing = weather;
     dataForClothing.gender = gender;
+    console.log('data sending to clothing api: ', dataForClothing);
     return $http({
       method: 'GET',
       url: '/api/clothing',
