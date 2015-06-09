@@ -28,7 +28,7 @@ angular.module('runPlannerApp')
 
   // sets google map html for result.map.js
   $scope.directionsHTML = function() {
-    return '<iframe width="800" height="600" frameborder="0" align="right"style="border:0" src="' + $scope.directionsSrc() + '"></iframe>'; 
+    return '<iframe width="800" height="600" frameborder="0" align="right"style="border:0" src="' + $scope.directionsSrc() + '"></iframe>';
 }
 
   $scope.htmlSafe = function(data) {
