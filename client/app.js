@@ -1,4 +1,3 @@
-// Declare app level module which depends on views, and components
 angular.module('runPlannerApp', [
   'ui.router', 'ngSanitize'
 ])
@@ -21,7 +20,7 @@ angular.module('runPlannerApp', [
           templateUrl: 'views/result/result.html',
         },
         // child;
-        /** viewname@statename: viewname is the name used in the view directive;  state name is the state's absolute name, e.g. result or contact.item. */
+        /** viewname@statename: viewname is the name used in the view directive; state name is the state's absolute name, e.g. result or contact.item. */
         'weather@result': {
           templateUrl: 'views/result/result.weather.html',
           controller: 'WeatherController'

@@ -16,6 +16,7 @@ var port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '/../client'));
 
 // API REQUESTS
+
 // get weather data
 app.get('/api/weather', function(req, res){
   var zipCode = req.query.zipCode || 94704; // maybe change .data
@@ -78,11 +79,11 @@ app.get('/api/route', function(req, res) {
         var rightCoord = {};
         var downCoord = {};
 
-        // originally only one coordinate. Now multiple, so upCoord is more like a firstCoord.
+        // originally only one coordinate. Now multiple, so upCoord is more like a firstCoord
         upCoord.lat = [
-        coordinates.start.lat + utils.latConvert(routeDist), 
-        coordinates.start.lat, 
-        coordinates.start.lat - utils.latConvert(routeDist), 
+        coordinates.start.lat + utils.latConvert(routeDist),
+        coordinates.start.lat,
+        coordinates.start.lat - utils.latConvert(routeDist),
         coordinates.start.lat];
 
         upCoord.lng = [
@@ -93,16 +94,16 @@ app.get('/api/route', function(req, res) {
         ];
 
         rightCoord.lat = [
-        upCoord.lat[0], 
-        upCoord.lat[1] - utils.latConvert(routeDist), 
-        upCoord.lat[2], 
+        upCoord.lat[0],
+        upCoord.lat[1] - utils.latConvert(routeDist),
+        upCoord.lat[2],
         upCoord.lat[3] + utils.latConvert(routeDist)
         ];
 
         rightCoord.lng = [
-        upCoord.lng[0] + utils.longConvert(routeDist), 
-        upCoord.lng[1], 
-        upCoord.lng[2] - utils.longConvert(routeDist), 
+        upCoord.lng[0] + utils.longConvert(routeDist),
+        upCoord.lng[1],
+        upCoord.lng[2] - utils.longConvert(routeDist),
         upCoord.lng[3]
         ];
 

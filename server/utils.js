@@ -1,8 +1,6 @@
 var db = require('./db.js')
 var request = require('request');
 
-
-
 module.exports = {
   convertToMetric: function(temp) {
     return (temp  - 32) * 5 / 9;
