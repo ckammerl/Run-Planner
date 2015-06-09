@@ -21,7 +21,6 @@ app.get('/api/weather', function(req, res){
   var zipCode = req.query.zipCode || 94704; // maybe change .data
   var result = {};
   var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + 'us&units=Imperial';
-  console.log(url);
   request(url, function(error, response, body) {
     if (!error && res.statusCode === 200) {
       result.temp = {'F': Math.round(JSON.parse(body).main.temp), 'C': Math.round(utils.convertToMetric(JSON.parse(body).main.temp))};
