@@ -144,5 +144,8 @@ app.get('/api/clothing', function(req, res){
 });
 
 app.listen(port);
+
+exports.app = app;
+
 console.log('Listening on port ' + port);
 

@@ -9,7 +9,6 @@ module.exports = {
   },
   calcTempScore: function(weatherObject) {
     var tempScore = weatherObject.fahrenheit;
-    console.log(weatherObject);
     tempScore -= weatherObject.wind / 3;
     if (weatherObject.weather.toLowerCase().indexOf('cloud') !== -1) {
       tempScore -= 5;

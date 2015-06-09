@@ -22,6 +22,7 @@ angular.module('runPlannerApp')
           Search.getWeather(zipCode)
           .then(function(weather) {
             ResultHandler.setWeather(weather);
+            console.log(weather);
             Search.getClothing($scope.search.gender, weather)
             .then(function(clothing) {
               ResultHandler.setClothing(clothing);

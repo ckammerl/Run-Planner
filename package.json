@@ -19,9 +19,13 @@
   "homepage": "https://github.com/ClairvoyantChameleon/Run-Planner",
   "dependencies": {
     "body-parser": "^1.12.4",
+    "chai": "^3.0.0",
     "express": "~4.12.4",
     "foundation": "^4.2.1-1",
+    "mocha": "^2.2.5",
     "mongoose": "~4.0.4",
-    "request": "~2.56.0"
+    "request": "^2.56.0",
+    "should": "^6.0.3",
+    "supertest": "^1.0.1"
   }
 }
