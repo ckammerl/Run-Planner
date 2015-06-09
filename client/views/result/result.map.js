@@ -12,7 +12,6 @@ angular.module('runPlannerApp')
     } else {
         $scope.routeNum = 0;
     }
-    console.log('the thingy');
     $scope.directionsHTML;
   }
 
@@ -20,22 +19,23 @@ angular.module('runPlannerApp')
   $scope.rightCoord = {lat: ResultHandler.route.rightCoordLat,lng: ResultHandler.route.rightCoordLng};
   $scope.downCoord = {lat: ResultHandler.route.downCoordLat,lng: ResultHandler.route.downCoordLng};
 
-  // generates google map with directions from given coordinates
+  // generates google map with directions based on coordinates submitted by user
   $scope.directionsSrc = function() {
     return 'https://www.google.com/maps/embed/v1/directions?origin=' + $scope.lat + ',' + $scope.lng + '&destination=' + $scope.lat + ',' + $scope.lng + '&waypoints=' + $scope.upCoord.lat[$scope.routeNum] + ',' + $scope.upCoord.lng[$scope.routeNum] + '|' + $scope.rightCoord.lat[$scope.routeNum] + ',' + $scope.rightCoord.lng[$scope.routeNum] + '|' + $scope.downCoord.lat[$scope.routeNum] + ',' + $scope.downCoord.lng[$scope.routeNum] + '&mode=walking&key=AIzaSyCBVw8evllNw1FaR2OXfFQvmJ-8jBpKWAI&zoom=14&center=' + $scope.lat + ',' + $scope.lng;
-}
-  console.log("result.map.js line 17: directions source api request", $scope.directionsSrc);
+  };
 
-  // sets google map html for result.map.js
+  // sets html for google map in result.map.js
   $scope.directionsHTML = function() {
     return '<iframe width="800" height="600" frameborder="0" align="right"style="border:0" src="' + $scope.directionsSrc() + '"></iframe>';
-}
+  };
 
+  // enables iframe display
   $scope.htmlSafe = function(data) {
     return $sce.trustAsHtml(data);
-  }
+  };
 })
 
+// enables iframe display
 .filter('toTrusted', function($sce) {
     return function(value) {
         return $sce.trustAsHtml(value);
