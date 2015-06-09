@@ -21,8 +21,7 @@ module.exports = function(config) {
       'client/bower_components/angular-sanitize/angular-sanitize.js',
       'client/*.js',
       'client/views/**/*.js',
-      '*.js',
-      'test/*.js'
+      'test/client/*.js'
     ],
 
 

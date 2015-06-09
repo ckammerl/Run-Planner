@@ -74,9 +74,51 @@ app.get('/api/route', function(req, res) {
       } else {
         coordinates.wayPoints = [];
         var routeDist = distance/4;
-        var upCoord = {'lat': coordinates.start.lat + utils.longConvert(routeDist), 'lng':coordinates.start.lng};
-        var rightCoord = {'lat': upCoord.lat, 'lng':upCoord.lng + utils.latConvert(routeDist)};
-        var downCoord = {'lat': rightCoord.lat - utils.longConvert(routeDist), 'lng':rightCoord.lng};
+        var upCoord = {};
+        var rightCoord = {};
+        var downCoord = {};
+
+        // originally only one coordinate. Now multiple, so upCoord is more like a firstCoord.
+        upCoord.lat = [
+        coordinates.start.lat + utils.latConvert(routeDist), 
+        coordinates.start.lat, 
+        coordinates.start.lat - utils.latConvert(routeDist), 
+        coordinates.start.lat];
+
+        upCoord.lng = [
+        coordinates.start.lng,
+        coordinates.start.lng + utils.longConvert(routeDist),
+        coordinates.start.lng,
+        coordinates.start.lng - utils.longConvert(routeDist)
+        ];
+
+        rightCoord.lat = [
+        upCoord.lat[0], 
+        upCoord.lat[1] - utils.latConvert(routeDist), 
+        upCoord.lat[2], 
+        upCoord.lat[3] + utils.latConvert(routeDist)
+        ];
+
+        rightCoord.lng = [
+        upCoord.lng[0] + utils.longConvert(routeDist), 
+        upCoord.lng[1], 
+        upCoord.lng[2] - utils.longConvert(routeDist), 
+        upCoord.lng[3]
+        ];
+
+        downCoord.lat = [
+        rightCoord.lat[0] - utils.latConvert(routeDist),
+        rightCoord.lat[1],
+        rightCoord.lat[2] + utils.latConvert(routeDist),
+        rightCoord.lat[3]
+        ];
+
+        downCoord.lng = [
+        rightCoord.lng[0],
+        rightCoord.lng[1] - utils.longConvert(routeDist),
+        rightCoord.lng[2],
+        rightCoord.lng[3] + utils.longConvert(routeDist)
+        ];
 
         coordinates.wayPoints.push(upCoord);
         coordinates.wayPoints.push(rightCoord);
@@ -102,5 +144,8 @@ app.get('/api/clothing', function(req, res){
 });
 
 app.listen(port);
+
+exports.app = app;
+
 console.log('Listening on port ' + port);
 
